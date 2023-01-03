@@ -1,0 +1,5 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Åôÿÿÿÿÿ
+q	java:S116"WRename this field "access_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÜ–üÿÿÿÿ
+j	java:S116"URename this field "token_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±˜™Š
+j	java:S116"URename this field "expires_in" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úü×
