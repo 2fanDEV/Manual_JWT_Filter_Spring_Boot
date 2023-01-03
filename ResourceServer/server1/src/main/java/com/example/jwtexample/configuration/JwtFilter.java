@@ -11,12 +11,13 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.text.ParseException;
 
-
+@Configuration
 public class JwtFilter extends OncePerRequestFilter {
 
     @Override
@@ -34,10 +35,9 @@ public class JwtFilter extends OncePerRequestFilter {
             throw new RuntimeException(e);
         }
 
-
         JWSVerifier jwsVerifier = null;
         try {
-            jwsVerifier = new RSASSAVerifier(JWKExtractor.jwkSet.toPublicJWKSet().getKeys().get(0).toRSAKey());
+            jwsVerifier = new RSASSAVerifier(JWKExtractor.jwkSet.getKeys().get(0).toRSAKey());
         } catch  (JOSEException ex) {
             throw new RuntimeException(ex);
         }
@@ -50,6 +50,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         if(!couldVerify)
         {
+            response.setStatus(401);
             return;
         }
 
